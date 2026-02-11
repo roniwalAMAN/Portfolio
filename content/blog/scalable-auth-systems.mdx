@@ -1,0 +1,30 @@
+---
+title: "Auth that scales: session hardening and multi-tenant RBAC"
+summary: "How I approach authentication/authorization for teams that need both velocity and compliance."
+date: "2024-08-03"
+tags: ["authentication", "backend", "security"]
+readingTime: "5 min"
+---
+
+Auth is usually the first place where scale, compliance, and UX collide. Here are patterns that worked well for B2B SaaS.
+
+### Keep sessions boring
+
+- Sign cookies with **HKDF-derived keys** and rotate regularly.
+- Default to short-lived access tokens with refresh tokens stored httpOnly + `SameSite=Lax`.
+- Rate-limit login, token refresh, and password reset separately.
+
+### Multi-tenant RBAC that stays flexible
+
+- Model roles as immutable grants (`role -> permissions`), then attach grants to groups. Avoid ad-hoc booleans.
+- Provide tenant-aware audit logs that capture who did what, where, and from which client.
+- Push authorization checks to the edge of each request with middleware and type-safe guards.
+
+### Developer experience
+
+- Add **feature flags** around new auth flows; let teams canary easily.
+- Provide local dev seed scripts that create tenants, users, and API tokens.
+- Build a “whoami” debug panel in staging to trace the decision path for any request.
+
+The goal: predictable auth you can trust, with the flexibility to ship new features without fear.
+

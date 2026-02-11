@@ -1,0 +1,38 @@
+---
+title: "Designing low-latency web systems without breaking reliability"
+summary: "Patterns I use to keep p95 low—connection strategy, caching layers, and observability that closes the loop."
+date: "2024-10-12"
+tags: ["real-time", "architecture", "observability"]
+readingTime: "6 min"
+---
+
+When you ship real-time features, latency budgets become product features. Here’s a practical checklist I use when building collaborative UIs with WebRTC or WebSockets.
+
+### 1) Connection strategy
+
+- Prefer WebRTC data channels when you need mesh or media; fall back to WebSockets for signaling and failover.
+- Use region-aware TURN with short-lived credentials to avoid cold starts.
+- Keep a circuit-breaker that forces reconnect on elevated packet loss; reconnect with **jitter** to avoid thundering herds.
+
+### 2) State & conflicts
+
+- Use **CRDTs** (like Yjs) for shared state; avoid server locking.
+- Persist ops to an append-only log (Kafka/Redis streams) and compact asynchronously.
+
+### 3) Edge & caching
+
+- Cache presence and user profiles at the edge. Stale reads are fine for UI hints.
+- Stream SSR responses in Next.js to render “above the fold” within 100ms even when data is loading.
+
+### 4) Observability
+
+- Instrument client + server with **OpenTelemetry**; ship traces, logs, and metrics together.
+- Track `connect_time`, `first_byte`, `p95_render`, and “silent failure” rates. Alert on trend, not just threshold.
+
+### 5) Testing the hard parts
+
+- Run latency budgets in CI with synthetic RTT/packet-loss profiles.
+- Add chaos hooks that randomly drop signaling messages; your reconnection logic should be boring.
+
+Great systems make the fast path obvious and the slow path debuggable. Everything else is accidental complexity.
+
