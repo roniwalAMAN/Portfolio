@@ -32,11 +32,8 @@ export function Projects() {
                   <li key={h} className="text-sm text-foreground">• {h}</li>
                 ))}
               </ul>
-            ) : (
-              project.impact && (
-                <p className="mt-3 text-sm text-foreground">{project.impact}</p>
-              )
-            )}
+            ) : null}
+
             <div className="mt-4 flex flex-wrap gap-2">
               {project.tech.map((tech) => (
                 <span
