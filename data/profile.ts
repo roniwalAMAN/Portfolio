@@ -13,7 +13,7 @@ export const bio = {
   email: "amanroniwal10@gmail.com",
   socials: [
     { label: "roniwalAMAN", href: "https://github.com/roniwalAMAN" },
-    { label: "Aman Roniwal", href: "https://www.linkedin.com/in/amanroniwal" },
+    { label: "Aman Roniwal", href: "https://www.linkedin.com/in/aman-roniwal-73b22528a/" },
   ],
 };
 
@@ -34,6 +34,59 @@ export const projects = [
     links: {
       github: "https://github.com/roniwalAMAN/MyCodeSync",
       live: "https://my-code-sync.vercel.app/",
+    },
+  },
+  {
+    title: "Interview Roadmap",
+    type: "Personal Project",
+    description:
+      "AI-powered full-stack web application that analyzes resumes and job descriptions to detect skill gaps, generate interview questions, and create ATS-optimized resumes using Gemini AI.",
+    highlights: [
+      "Analyzes resume vs job description to identify skill gaps",
+      "Generates targeted interview questions using Gemini AI",
+      "Creates ATS-optimized resume drafts",
+      "Secure authentication with JWT and token blacklisting",
+      "Automated PDF generation pipeline using Puppeteer",
+    ],
+    tech: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "JWT",
+      "Token Blacklisting",
+      "Gemini API",
+      "Puppeteer",
+    ],
+    links: {
+      github: "https://github.com/roniwalAMAN/Interview-Roadmap",
+      live: "",
+    },
+  },
+  {
+    title: "AI Component Generator (GenUI)",
+    type: "Personal Project",
+    description:
+      "AI-powered frontend web app that converts natural language prompts into ready-to-use UI component code using Gemini AI. It includes Monaco Editor based code editing, live preview, theme toggle, and copy/download actions for fast prototyping.",
+    highlights: [
+      "Converts natural language prompts into UI component code",
+      "Gemini AI integration for fast component generation",
+      "Monaco Editor based code editing with live preview",
+      "Theme toggle for better development workflow",
+      "Copy and download actions for rapid prototyping",
+    ],
+    tech: [
+      "React.js",
+      "Vite",
+      "Tailwind CSS",
+      "Gemini API (@google/genai)",
+      "Monaco Editor",
+      "React Router",
+      "React Select",
+      "React Toastify",
+    ],
+    links: {
+      github: "https://github.com/roniwalAMAN/Ai-com-gen",
+      live: "https://ai-com-gen-henna.vercel.app",
     },
   },
 ];
@@ -62,13 +115,31 @@ export const experiences = [
 ];
 
 export const skills = {
-  frontend: ["React", "Next.js", "TypeScript", "Redux Toolkit"],
-  backend: ["Node.js", "Express.js", "WebSockets", "WebRTC"],
+  frontend: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Redux Toolkit",
+    "Vite",
+    "Tailwind CSS",
+    "Monaco Editor",
+    "React Router",
+  ],
+  backend: [
+    "Node.js",
+    "Express.js",
+    "WebSockets",
+    "WebRTC",
+    "JWT",
+    "Token Blacklisting",
+    "Puppeteer",
+  ],
   databases: ["PostgreSQL", "MySQL", "MongoDB"],
+  aiAndApis: ["Gemini API", "Stream SDK"],
 };
 
 export const stats = [
   { label: "Years of Experience", value: "3+" },
-  { label: "Projects Completed", value: "1+" },
+  { label: "Projects Completed", value: "3+" },
 ];
 

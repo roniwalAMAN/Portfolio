@@ -44,7 +44,7 @@ export function Navbar() {
             <Github className="h-4 w-4" />
           </Link>
           <Link
-            href="https://www.linkedin.com/in/amanroniwal"
+            href="https://www.linkedin.com/in/aman-roniwal-73b22528a/"
             className="rounded-full border border-border/60 p-2 text-muted transition hover:border-accent hover:text-accent"
           >
             <Linkedin className="h-4 w-4" />

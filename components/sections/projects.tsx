@@ -45,20 +45,24 @@ export function Projects() {
               ))}
             </div>
             <div className="mt-5 flex items-center gap-3 text-sm font-medium">
-              <Link
-                href={project.links.live}
-                className="flex items-center gap-1 text-accent hover:underline"
-              >
-                <Link2 className="h-4 w-4" />
-                Live
-              </Link>
-              <Link
-                href={project.links.github}
-                className="flex items-center gap-1 text-muted hover:text-foreground"
-              >
-                <Github className="h-4 w-4" />
-                GitHub
-              </Link>
+              {project.links?.live ? (
+                <Link
+                  href={project.links.live}
+                  className="flex items-center gap-1 text-accent hover:underline"
+                >
+                  <Link2 className="h-4 w-4" />
+                  Live
+                </Link>
+              ) : null}
+              {project.links?.github ? (
+                <Link
+                  href={project.links.github}
+                  className="flex items-center gap-1 text-muted hover:text-foreground"
+                >
+                  <Github className="h-4 w-4" />
+                  GitHub
+                </Link>
+              ) : null}
             </div>
           </Card>
         ))}
